@@ -1,0 +1,14 @@
+html,body{
+    height: 100%
+}
+body {
+	padding-top: 50px;
+}
+.footer a {
+	color: #FFFFFF;
+}
+.bottom {
+	position: absolute;
+	height: 40px;
+	width: 100%;
+}
