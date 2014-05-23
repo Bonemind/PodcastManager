@@ -1,0 +1,24 @@
+{
+  "name": "Podcastmanager",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Bonemind/PodcastManager",
+  "authors": [
+    "Bonemind <subhime@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "underscore": "*",
+    "backbone": "*",
+    "backbone-mvc": "*",
+    "jquery": "~2.1.1",
+    "jplayer": "~2.6.1"
+  }
+}

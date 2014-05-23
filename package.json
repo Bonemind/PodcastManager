@@ -1,0 +1,26 @@
+{
+  "name": "Podcastmanager",
+  "version": "0.0.1",
+  "description": "Web based podcast management tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bonemind/PodcastManager.git"
+  },
+  "author": "Bonemind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bonemind/PodcastManager/issues"
+  },
+  "homepage": "https://github.com/Bonemind/PodcastManager",
+  "devDependencies": {
+    "bower": "~1.3.3",
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1"
+  }
+}
