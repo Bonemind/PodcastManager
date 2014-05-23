@@ -4,11 +4,23 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Styling -->
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/jplayer.css">
+
+	<!-- Scripts -->
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-	<title>Podcast manager</title>
+	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+	<script type="text/javascript" src="bower_components/backbone-mvc/backbone-mvc.js"></script>
+	<script type="text/javascript" src="bower_components/jplayer/jquery.jplayer/jquery.jplayer.js"></script>
+	<script type="text/javascript" src="bower_components/mediaelement/build/mediaelement-and-player.min.js"></script>
+	<title>Podman</title>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -37,18 +49,73 @@
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
-	<div class="container-fluid">
-		<div class="col-md-2">
+	<div class="container-fluid main-content">
+		<div class="col-md-2" id="feeds">
 			<h1>Bootstrap starter template</h1>
 			<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-10" id="items">
 			<div class="jumbotron">
 				<h1>Lorem Ipsum</h1>
 				<p>Sit fugiat eum facilis velit inventore, id eveniet rem maxime, temporibus quos rerum nesciunt eligendi! Commodi architecto provident aspernatur delectus maxime aut. Illum ullam saepe reiciendis esse quae! Itaque vitae?</p>
 			</div>
-		</div>
-	</div><!-- /.container -->
+		</div> 
+	</div><!-- /.container --> 
+	<!-- player -->
+	<div class="bottom col-md-offset-2 col-md-10" id="jplayer-div">
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
 
+<div id="jp_container_1" class="jp-audio">
+  <div class="jp-type-single">
 
+    <div class="jp-title">
+      <ul>
+        <li>TEDxPhoenix - Kelli Anderson - Disruptive Wonder for a Change</li>
+      </ul>
+    </div>
 
+    <div class="jp-gui jp-interface">
+
+        <ul class="jp-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1">&#61515;</a></li>
+          <li><a href="javascript:;" class="jp-pause" tabindex="1">&#61516;</a></li>
+          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">&#61480;</a></li>
+          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">&#61478;</a></li>
+        </ul>
+
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+
+        <div class="jp-time-holder">
+          <div class="jp-current-time"></div>
+        </div>
+
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+
+    <div class="jp-no-solution">
+      <span>Update Required</span>
+      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#jquery_jplayer_1").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {
+        mp3: "test.mp3",
+      });
+    },
+    swfPath: "/js",
+    supplied: "mp3"
+  });
+});
+//$("#jquery_jplayer_1").jPlayer("setMedia", {"mp3": "test2.mp3"});
+</script>
+		
+	</div>

@@ -19,6 +19,6 @@
     "backbone": "*",
     "backbone-mvc": "*",
     "jquery": "~2.1.1",
-    "jplayer": "~2.6.1"
+    "jplayer": "~2.6.1",
   }
 }

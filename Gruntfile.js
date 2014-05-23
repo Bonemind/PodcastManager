@@ -22,6 +22,9 @@ module.exports = function(grunt) {
       },
     },
     watch: {
+	  options: {
+	    livereload: true,
+	  },
 	  scripts: {
 	    files: ['**/*.js', '**/*.html','!build/*.js', '!index.html'],
 	    tasks: ['concat'],
