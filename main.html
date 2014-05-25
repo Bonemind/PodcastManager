@@ -19,10 +19,8 @@
 	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
 	<script type="text/javascript" src="bower_components/backbone-mvc/backbone-mvc.js"></script>
 	<script type="text/javascript" src="bower_components/jplayer/jquery.jplayer/jquery.jplayer.js"></script>
-	<script type="text/javascript" src="bower_components/mediaelement/build/mediaelement-and-player.min.js"></script>
 	<title>Podman</title>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -43,7 +41,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
+					<li><a href="#/feeds">Feeds</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -67,20 +65,12 @@
 
 <div id="jp_container_1" class="jp-audio">
   <div class="jp-type-single">
-
-    <div class="jp-title">
-      <ul>
-        <li>TEDxPhoenix - Kelli Anderson - Disruptive Wonder for a Change</li>
-      </ul>
-    </div>
-
     <div class="jp-gui jp-interface">
-
         <ul class="jp-controls">
-          <li><a href="javascript:;" class="jp-play" tabindex="1">&#61515;</a></li>
-          <li><a href="javascript:;" class="jp-pause" tabindex="1">&#61516;</a></li>
-          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">&#61480;</a></li>
-          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">&#61478;</a></li>
+		<li><a href="javascript:;" class="jp-play" tabindex="1"><i class="glyphicon glyphicon-play"></i></a></li>
+		<li><a href="javascript:;" class="jp-pause" tabindex="1"><i class="glyphicon glyphicon-pause"></i></a></li>
+		<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute"><i class="glyphicon glyphicon-volume-off"></i></a></li>
+		<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute"><i class="glyphicon glyphicon-volume-down"></i></a></li>
         </ul>
 
         <div class="jp-progress">
@@ -104,9 +94,11 @@
   </div>
 </div>
 <script type="text/javascript">
+//Initialize jplayer object
 $(document).ready(function(){
   $("#jquery_jplayer_1").jPlayer({
     ready: function () {
+      $(this).bind($.jPlayer.event.timeupdate, PlayerWrapper.timeUpdate);
       $(this).jPlayer("setMedia", {
         mp3: "test.mp3",
       });
@@ -115,7 +107,31 @@ $(document).ready(function(){
     supplied: "mp3"
   });
 });
-//$("#jquery_jplayer_1").jPlayer("setMedia", {"mp3": "test2.mp3"});
+//Convenience object to wrap the jplayer object
+var PlayerWrapper = {
+	player: $("#jquery_jplayer_1"),
+	model: undefined,
+	setMedia: function(url) {
+		var media = {};
+		var ext = this.getExtension(url);
+		media[ext] = url;
+		this.player.jPlayer("setMedia", media);
+		this.player.jPlayer("play");
+	},
+	getExtension: function(url) {
+		return url.split('.').pop().split(/\#|\?/)[0];
+	},
+	setModel: function(model) {
+		this.model = model;
+		this.setMedia(model.get("media"));
+	}, 
+	timeUpdate: function(event) {
+		var currTime = Math.floor(event.jPlayer.status.currentTime);
+		if ((currTime % 30) == 0) {
+			console.log("30-sec trigger");
+		}
+	}
+}
 </script>
 		
 	</div>
