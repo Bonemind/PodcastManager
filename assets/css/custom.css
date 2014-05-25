@@ -13,3 +13,7 @@ body {
 	left: 0px;
 	right: 0px;
 }
+#feeds {
+    border-right: #151515 solid;
+    height: 100%;
+}
